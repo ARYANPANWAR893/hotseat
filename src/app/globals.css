@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/* Hotseat brand: forest green + lime on warm cream, butter and coral as small accents. One theme, on purpose. See BRAND.md. */
+:root {
+  color-scheme: light;
+  --cream: #f6f3ea; --paper: #ffffff; --forest: #0d3b2e; --forest-2: #145240; --lime: #c8f560; --lime-soft: #eaf9bd;
+  --ink: #12201a; --ink-2: #4b5a52; --line: #e2ddcf; --butter: #ffd66b; --coral: #ff7a59; --mint: #a8e6c3; --blush: #ffc9b8;
+  --good: #1d7a47; --bad: #c4361b; --ring: #0d3b2e;
+}
+
+@theme inline {
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-display: var(--font-head), var(--font-body), system-ui, sans-serif;
+  --color-cream: var(--cream); --color-paper: var(--paper); --color-forest: var(--forest); --color-forest-2: var(--forest-2);
+  --color-lime: var(--lime); --color-lime-soft: var(--lime-soft); --color-ink: var(--ink); --color-ink-2: var(--ink-2); --color-line: var(--line);
+  --color-butter: var(--butter); --color-coral: var(--coral); --color-mint: var(--mint); --color-blush: var(--blush);
+  --color-good: var(--good); --color-bad: var(--bad);
+}
+
+html { scroll-padding-bottom: 7rem; }
+body { background: var(--cream); color: var(--ink); font-family: var(--font-body), system-ui, sans-serif; line-height: 1.55; }
+.font-display { font-family: var(--font-head), var(--font-body), system-ui, sans-serif; font-weight: 700; letter-spacing: -0.03em; line-height: 1.02; }
+:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; border-radius: 8px; }
+.on-dark :focus-visible { outline-color: var(--lime); }
+[tabindex="-1"]:focus { outline: none; }
+::selection { background: var(--lime); color: var(--ink); }
+
+@keyframes pop { 0% { transform: scale(0.8); opacity: 0.4; } 60% { transform: scale(1.08); } 100% { transform: scale(1); opacity: 1; } }
+.pop { animation: pop 0.3s ease-out; }
+/* opacity only: a transform here would trap position:fixed bars inside the animated wrapper */
+@keyframes rise { from { opacity: 0; } to { opacity: 1; } }
+.rise { animation: rise 0.25s ease-out; }
+@keyframes talk { 0%, 100% { transform: scaleY(0.25); } 50% { transform: scaleY(1); } }
+.talk { transform-origin: center; transform-box: fill-box; animation: talk 0.28s ease-in-out infinite; }
+@keyframes bar { 0%, 100% { transform: scaleY(0.2); } 50% { transform: scaleY(1); } }
+.bar { transform-origin: center; animation: bar 0.9s ease-in-out infinite; }
+@keyframes live { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.live-dot { animation: live 1.4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

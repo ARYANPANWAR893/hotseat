@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "placement-panel",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "/Users/aryan/Desktop/code/Hackathons/Gnani AI Internship Challenge"],
+      "port": 3000
+    }
+  ]
+}
